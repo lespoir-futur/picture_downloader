@@ -4,6 +4,7 @@ import re
 import os
 from urllib.parse import urlparse
 from urllib.parse import urljoin
+import time
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 
@@ -36,5 +37,6 @@ for img_url in img_urls:
 
     with open(filepath,'wb') as f:
         f.write(pic.content)
+        time.sleep(1) #Avoid ConnectionResetError
     
 print('saved success!')
